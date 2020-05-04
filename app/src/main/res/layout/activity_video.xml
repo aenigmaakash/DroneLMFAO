@@ -176,7 +176,8 @@
         <com.fyp.dronelmfao.MjpegView
             android:id="@+id/mv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp" />
 
     </LinearLayout>
 
