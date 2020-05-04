@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "434882802035",
+    "firebase_url": "https://dronelmfao.firebaseio.com",
+    "project_id": "dronelmfao",
+    "storage_bucket": "dronelmfao.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:434882802035:android:49cfe4696eb136626ad506",
+        "android_client_info": {
+          "package_name": "com.fyp.dronelmfao"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "434882802035-m7uo30p0uj3u68epdb7i7prseuhjm7v3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBA-J87lo1v0uali7DnkFhIWc9HNcyD1fY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "434882802035-m7uo30p0uj3u68epdb7i7prseuhjm7v3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

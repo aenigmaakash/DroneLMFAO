@@ -209,7 +209,7 @@ class MjpegView : View {
         synchronized(lockBitmap) {
             if (c != null && lastBitmap != null && !lastBitmap!!.isRecycled) {
                 if (isInEditMode) {
-                    
+
                 } else if (mode != MODE_ORIGINAL) {
                     c.drawBitmap(lastBitmap!!, null, dst!!, paint)
                 } else {
@@ -230,19 +230,24 @@ class MjpegView : View {
         isRecycleBitmap = recycleBitmap
     }
 
+    fun isActive(): Boolean{
+        return downloader != null
+    }
+
     internal inner class MjpegDownloader : Thread() {
         var isRunning = true
             private set
 
         fun cancel() {
             isRunning = false
+            Log.i(tag, "Stream Cancelled")
         }
 
         override fun run() {
             while (isRunning) {
                 var connection: HttpURLConnection? = null
                 var bis: BufferedInputStream? = null
-                var serverUrl: URL? = null
+                var serverUrl: URL?
                 try {
                     serverUrl = URL(url)
                     connection = serverUrl.openConnection() as HttpURLConnection
@@ -257,7 +262,7 @@ class MjpegView : View {
                             ?: throw Exception("Unable to get content type")
                         val types =
                             contentType.split(";").toTypedArray()
-                        if (types.size == 0) {
+                        if (types.isEmpty()) {
                             throw Exception("Content type was empty")
                         }
                         var extractedBoundary: String? = null
@@ -337,14 +342,14 @@ class MjpegView : View {
                                 image = addByte(image, read, 0, readByte)
                             }
                         } catch (e: Exception) {
-                            if (e != null && e.message != null) {
+                            if (e?.message != null) {
                                 Log.e(tag, e.message)
                             }
                             break
                         }
                     }
                 } catch (e: Exception) {
-                    if (e != null && e.message != null) {
+                    if (e?.message != null) {
                         Log.e(tag, e.message)
                     }
                 }
@@ -353,7 +358,7 @@ class MjpegView : View {
                     connection!!.disconnect()
                     Log.i(tag, "disconnected with $url")
                 } catch (e: Exception) {
-                    if (e != null && e.message != null) {
+                    if (e?.message != null) {
                         Log.e(tag, e.message)
                     }
                 }
@@ -361,7 +366,7 @@ class MjpegView : View {
                     try {
                         sleep(msecWaitAfterReadImageError.toLong())
                     } catch (e: InterruptedException) {
-                        if (e != null && e.message != null) {
+                        if (e?.message != null) {
                             Log.e(tag, e.message)
                         }
                     }
